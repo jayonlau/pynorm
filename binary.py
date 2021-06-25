@@ -1,14 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# @Author:jayonlau
 
 import magic
 import re
 import codecs
  
-def is_binary_file_1(file_path):
+def Is_binary(file_path):
     '''
-    根据text文件数据类型判断是否是二进制文件
-    :return: True或False，返回是否是二进制文件
+    Judge whether it is a binary file according to the text file data type
+    :return: True or False
     '''
     TEXT_BOMS = (
         codecs.BOM_UTF16_BE,
@@ -25,12 +26,12 @@ def is_binary_file_1(file_path):
     return not any(initial_bytes.startswith(bom) for bom in TEXT_BOMS) and b'\0' in initial_bytes
  
  
-def is_binary_file_2(file_path):
+def Is_magic(file_path):
     '''
-    根据magic文件的魔术判断是否是二进制文件
-    :return: True或False，返回是否是二进制文件
+    Judge whether it is a binary file according to the magic of magic file
+    :return: True or False
     '''
-    mime_kw = 'x-executable|x-sharedlib|octet-stream|x-object'  ###可执行文件、链接库、动态流、对象
+    mime_kw = 'x-executable|x-sharedlib|octet-stream|x-object'
     try:
         magic_mime = magic.from_file(file_path, mime=True)
         magic_hit = re.search(mime_kw, magic_mime, re.I)
@@ -41,10 +42,26 @@ def is_binary_file_2(file_path):
     except ZeroDivisionError:
         return False
  
+def Is_pdf(file_path):
+    '''
+    Judge whether it is a PDF file
+    :return: True or False
+    '''
+    file = file_path
+    if ".pdf" in file:
+       return True
+    elif ".PDF" in file:
+       return True
+    else:
+       return False
+
 def If_Binary(file_path):
-    if not is_binary_file_1(file_path):
-       if not is_binary_file_2(file_path):
-          return False
+    if not Is_binary(file_path):
+       if not Is_magic(file_path):
+          if not Is_pdf(file_path):
+             return False
+          else:
+             return True
        else:
           return True
     else:

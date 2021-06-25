@@ -1,14 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# @Author:jayonlau
 
 import os
+import sys
 from binary  import If_Binary
 
 #define a space
 blank = " "
 
 #define folder
-path = r'/root/ljy/kubespray'
+path = sys.argv[1]
+
+#Create file storage directory
+
 
 #iterate through all the files
 def FilesPath(path):
@@ -17,19 +22,22 @@ def FilesPath(path):
         for file in files:
             if not If_Binary(os.path.join(root,file)):
                filePaths.append(os.path.join(root,file))
-    print(filePaths)
     return(filePaths)
 
 
 def pynorm():
     filePaths = FilesPath(path)
     for file in filePaths:
-      print(file)
       f = open(file, encoding='utf-8')
       message = f.read().splitlines()
+      count = 0
       for line in message:
+          count += 1 
           if line.endswith(blank):
-             print(line)
+             print("The files with spaces are: %s"%file)
+             print("The line of file is: %s"%count)
+             print("The message is: %s"%line)
+             print("\n")
       f.close()
 
 if __name__ == "__main__":
