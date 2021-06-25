@@ -17,6 +17,7 @@ sudo pip3 install -r requirements.txt
 #and prints out any files that contain excess space.
 
 ```
+cd pynorm
 python3 pynorm.py $FILE_DIR
 ```
 
