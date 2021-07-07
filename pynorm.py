@@ -5,6 +5,7 @@
 import os
 import sys
 from binary  import If_Binary
+from exclude_file import Exclude_file
 
 #define a space
 blank = " "
@@ -21,7 +22,8 @@ def FilesPath(path):
     for root,dirs,files in os.walk(path):
         for file in files:
             if not If_Binary(os.path.join(root,file)):
-               filePaths.append(os.path.join(root,file))
+               if not Exclude_file(os.path.join(root,file)):
+                  filePaths.append(os.path.join(root,file))
     return(filePaths)
 
 
