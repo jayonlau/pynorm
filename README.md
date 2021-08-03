@@ -1,23 +1,31 @@
 # pynorm
 
-We want to be able to use this tool to find some standard syntax errors and avoid some repetitive work.
+希望可以用这个工具去发现代码中的一些低级语法错误。
 
-# Quick Start
+# 快速开始
 
-## Install dependencies
+## 安装依赖
 
 ```
 sudo pip3 install -r requirements.txt
 ```
 
-## Find any extra Spaces in the text
+## 寻找程序中行末多余的空格
 
-#The program looks for all the text files in the directory
+#从文件夹中打印可视化输出多余的空格
 
-#and prints out any files that contain excess space.
 
 ```
 cd pynorm
 python3 pynorm.py $FILE_DIR
 ```
+#批量下载使用率较高的openstack项目
+#批量获取openstack项目中多余的空格
 
+```
+python3 ./pynorm/openstack/clone_openstack.py
+项目代码默认下载位置：/tmp/openstack
+
+python3 ./pynorm/pynorm_openstack.py
+扫描结果默认输出位置；/tmp/openstack_report
+```
