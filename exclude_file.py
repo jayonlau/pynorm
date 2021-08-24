@@ -22,5 +22,9 @@ def Exclude_file(file_path):
        return True
     elif ".xml" in file:
        return True
+    elif ".ai" in file:
+       return True
+    elif ".ttar" in file:
+       return True
     else:
        return False    

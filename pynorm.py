@@ -30,6 +30,7 @@ def FilesPath(path):
 def pynorm():
     filePaths = FilesPath(path)
     for file in filePaths:
+#   print(file)
       f = open(file, encoding='utf-8')
       message = f.read().splitlines()
       count = 0
