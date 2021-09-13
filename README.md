@@ -23,7 +23,8 @@ python3 pynorm.py $FILE_DIR
 #批量获取openstack项目中多余的空格
 
 ```
-python3 ./pynorm/openstack/clone_openstack.py
+cd /pynorm/openstack/
+python3 clone_openstack.py
 项目代码默认下载位置：/tmp/openstack
 
 python3 ./pynorm/pynorm_openstack.py
